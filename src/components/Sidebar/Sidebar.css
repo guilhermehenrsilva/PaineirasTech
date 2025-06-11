@@ -1,0 +1,238 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 15px; /* Padding padrão quando estendida */
+    height: 100vh; /* Ocupa a altura total da viewport */
+    overflow-y: auto; /* Adiciona scroll interno se o conteúdo exceder a altura */
+    background-color: var(--verde-paineiras);
+    animation: fadeInAnim 1.9s;
+    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
+    color: var(--branco);
+    width: 250px; /* Largura padrão quando estendida */
+    box-sizing: border-box;
+    align-items: flex-start; /* Padrão: alinha os itens principais à esquerda quando expandida */
+}
+
+.sidebar.minimized {
+    width: 70px;
+    padding: 25px 0px;
+    align-items: center; /* Centraliza horizontalmente todos os itens flex dentro da sidebar */
+    overflow-y: hidden;
+}
+
+/* Scrollbar para a sidebar quando o conteúdo exceder a altura */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar img {
+    width: 22px;
+    filter: brightness(0) invert(1);
+}
+
+/* O container 'top' precisa ser flex para alinhar seus próprios filhos */
+.sidebar .top {
+    width: 100%; /* Garante que 'top' ocupe toda a largura da sidebar */
+    display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
+    align-items: flex-start; /* Alinha o menu e o new-chat à esquerda quando expandida */
+    margin-bottom: 20px; /* Espaço abaixo da seção superior */
+}
+
+.sidebar.minimized .top {
+    align-items: center; /* Centraliza o menu e o new-chat quando a sidebar é minimizada */
+}
+
+.sidebar .menu {
+    display: block;
+    cursor: pointer;
+    margin-left: 10px; /* Margem quando estendida */
+    transition: margin-left 0.3s ease, align-self 0.3s ease;
+    align-self: flex-start; /* Alinha o ícone de menu à esquerda na versão estendida */
+}
+
+.sidebar.minimized .menu {
+    margin-left: 0; /* Remove margem para centralizar */
+    align-self: center; /* Centraliza o ícone de menu dentro do .top */
+}
+
+.sidebar .new-chat {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    color: var(--branco);
+    border-radius: 40px;
+    margin-top: 50px; /* Margem superior para separar do menu */
+    transition: background-color 0.3s ease, padding 0.3s ease, width 0.3s ease, margin 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    width: auto; /* Permite que a largura se ajuste ao conteúdo quando estendida */
+    box-sizing: border-box;
+    align-self: flex-start; /* Alinha o new-chat à esquerda na versão estendida */
+}
+
+.sidebar.minimized .new-chat {
+    width: 40px; /* Largura fixa para o ícone quando minimizado */
+    height: 40px; /* Altura fixa para o ícone quando minimizado */
+    padding: 0; /* Remover padding para centralizar perfeitamente o ícone */
+    margin: 50px auto 0; /* Centraliza horizontalmente usando auto margin */
+    justify-content: center; /* Centraliza o conteúdo (ícone) dentro do botão */
+    align-items: center; /* Centraliza o ícone verticalmente */
+    align-self: center; /* Centraliza o new-chat dentro do .top */
+}
+
+.sidebar .recent {
+    display: flex;
+    flex-direction: column;
+    animation: fadeInAnim 1.9s;
+    overflow-y: auto; /* Scroll interno para os itens recentes */
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding-right: 5px; /* Espaço para o scrollbar */
+}
+
+/* Scrollbar para a seção 'recent' */
+.sidebar .recent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar .recent::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.sidebar .recent::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.sidebar .recent::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar.minimized .recent {
+    align-items: center; /* Centraliza os itens recentes quando minimizada */
+    overflow-y: hidden; /* Oculta o scroll quando minimizado */
+}
+
+.sidebar .recent-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center; /* Centraliza o texto do título */
+    width: 100%; /* Garante que ocupe a largura para centralizar */
+}
+
+.sidebar.minimized .recent-title {
+    opacity: 0; /* Oculta o título "Recentes" */
+    height: 0;
+    margin: 0;
+    padding: 0;
+    transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar .recent-entry {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* Alinha verticalmente ícone e texto */
+    padding: 10px; /* Padding padrão */
+    border-radius: 40px;
+    padding-right: 40px; /* Mais padding à direita para o texto */
+    color: var(--branco);
+    cursor: pointer;
+    transition: background-color 0.3s ease, padding 0.3s ease, width 0.3s ease, margin 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%; /* Ocupa a largura do pai quando estendida */
+    box-sizing: border-box;
+}
+
+.sidebar.minimized .recent-entry {
+    width: 40px; /* Largura fixa para o ícone quando minimizado */
+    height: 40px; /* Altura fixa para o ícone quando minimizado */
+    padding: 0; /* Remover padding para centralizar perfeitamente o ícone */
+    justify-content: center; /* Centraliza o ícone horizontalmente */
+    margin: 5px auto; /* Centraliza cada item horizontalmente */
+}
+
+.sidebar .recent-entry:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start; /* Alinha os itens à esquerda por padrão */
+    overflow: hidden; /* Oculta o texto que está fora do fluxo quando minimizado */
+    margin-top: auto; /* Empurra a seção 'bottom' para o final da sidebar */
+}
+
+.sidebar.minimized .bottom {
+    align-items: center; /* Centraliza os itens horizontalmente quando minimizado */
+}
+
+.sidebar .bottom-item {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px; /* Padding padrão */
+    border-radius: 40px;
+    color: var(--branco);
+    transition: background-color 0.3s ease, padding 0.3s ease, width 0.3s ease, margin 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%; /* Ocupa a largura do pai quando estendida */
+    box-sizing: border-box;
+}
+
+.sidebar.minimized .bottom-item {
+    width: 40px; /* Largura fixa para o ícone quando minimizado */
+    height: 40px; /* Altura fixa para o ícone quando minimizado */
+    padding: 0; /* Remover padding para centralizar perfeitamente o ícone */
+    justify-content: center; /* Centraliza o ícone horizontalmente */
+    margin: 5px auto; /* Centraliza cada item horizontalmente */
+}
+
+.sidebar .bottom-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ANIMATIONS  */
+
+@keyframes fadeInAnim {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVENESS  */
+
+@media (max-width: 600px) {
+    .sidebar {
+        display: none;
+    }
+}

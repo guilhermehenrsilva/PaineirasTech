@@ -1,0 +1,382 @@
+/* src/components/Main/Main.css */
+
+.main {
+    flex: 1; /* Permite que o main ocupe todo o espaço restante horizontalmente */
+    height: 100%; /* Garante que o main ocupe a altura disponível do flex container */
+    overflow-y: hidden; /* Garante que o main não crie um scrollbar, o scroll será no .main-container ou .result */
+    position: relative; /* Mantido para posicionamento de elementos internos, como main-bottom */
+    background-color: var(--cinza-claro); /* Fundo principal da área do chat - cinza bem claro */
+    display: flex;
+    flex-direction: column;
+}
+
+.main .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    padding: 20px;
+    color: var(--verde-paineiras); /* Cor do texto "PAINEIRAS Assistente" - verde floresta */
+    background-color: var(--verde-claro-suave); /* Fundo do cabeçalho - verde claro suave */
+    box-shadow: 0 2px 4px var(--sombra-leve); /* Sombra suave */
+    border-bottom: 1px solid var(--borda-input); /* Borda sutil */
+    flex-shrink: 0; /* Garante que o nav não encolha */
+}
+
+.main .nav img {
+    width: 40px;
+    border-radius: 50%;
+    /* Se o user_icon for muito escuro e você quiser que ele se destaque */
+    /* filter: brightness(1.5); */
+}
+
+.main-container {
+    max-width: 900px;
+    margin: auto; /* Centraliza o conteúdo principal horizontalmente */
+    flex-grow: 1; /* Permite que o main-container ocupe o espaço restante verticalmente */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; Removido, pois main-bottom e bottom-info controlarão seu próprio espaçamento */
+    overflow-y: auto; /* Permite scroll no conteúdo principal se ele for muito longo */
+    box-sizing: border-box; /* Garante que padding seja incluído na altura */
+}
+
+/* Scrollbar para o main-container, se o conteúdo exceder */
+.main-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-container::-webkit-scrollbar-track {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+    background: var(--cinza-medio);
+    border-radius: 10px;
+}
+
+.main-container::-webkit-scrollbar-thumb:hover {
+    background: var(--preto-paineiras);
+}
+
+.main .greet {
+    margin: 50px 0px;
+    font-size: 48px;
+    color: var(--preto-paineiras); /* Cor para o texto "Olá," e "Como posso lhe ajudar hoje?" */
+    font-weight: 500;
+    margin-bottom: 30px;
+    flex-shrink: 0; /* Garante que o greet não encolha */
+}
+
+.main .greet span {
+    background: -webkit-linear-gradient(16deg, var(--verde-paineiras), var(--verde-hover-btn));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 0;
+    flex-shrink: 0; /* Garante que os cards não encolham */
+    margin-bottom: 20px; /* Adiciona um espaçamento entre os cards e o main-bottom */
+}
+
+.main .card {
+    height: 200px;
+    padding: 15px;
+    background-color: var(--branco); /* Fundo branco para os cards */
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--sombra-card); /* Sombra visível para os cards */
+    transition: all 0.3s ease;
+}
+
+.main .card img {
+    width: 35px;
+    padding: 5px;
+    position: absolute;
+    background-color: var(--verde-bem-clarinho-hover); /* Fundo verde claro para os ícones nos cards */
+    border-radius: 20px;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 0 1px 3px var(--sombra-leve); /* Sombra nos ícones */
+}
+
+.main .card p {
+    color: var(--preto-paineiras); /* Cor do texto dos cards */
+    font-size: 17px;
+}
+
+.main .card:hover {
+    background-color: var(--verde-bem-clarinho-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--sombra-card-hover);
+    border: 1px solid var(--verde-paineiras);
+}
+
+.main-bottom {
+    width: 100%;
+    max-width: 900px;
+    padding: 0px 20px 20px; /* Mantém o padding inferior */
+    margin: auto; /* Centraliza o main-bottom horizontalmente */
+    box-sizing: border-box;
+    flex-shrink: 0; /* Garante que o main-bottom não encolha */
+    margin-top: auto; /* Isso empurra o main-bottom para o final do main-container */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--branco);
+    border: 1px solid var(--borda-input);
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px var(--sombra-card);
+}
+
+.search-box input:focus {
+    box-shadow: 0 0 0 0.25rem var(--sombra-foco-verde);
+    border-color: var(--verde-paineiras);
+}
+
+.search-box img {
+    width: 24px;
+    cursor: pointer;
+    filter: invert(32%) sepia(26%) saturate(2377%) hue-rotate(94deg) brightness(97%) contrast(97%);
+    transition: transform 0.2s ease-in-out;
+}
+
+.search-box img:active {
+    transform: scale(0.95);
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 18px;
+    color: var(--preto-paineiras);
+}
+
+.search-box input::placeholder {
+    color: var(--cinza-medio);
+}
+
+.search-box div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main .bottom-info {
+    font-size: 13px;
+    margin: 15px auto 0; /* Ajustado para que a margem inferior seja 0, ou adicione conforme necessário */
+    text-align: center;
+    font-weight: 300;
+    color: var(--cinza-medio);
+    flex-shrink: 0;
+    line-height: 1.6; /* Espaçamento de linha para melhor leitura */
+}
+
+.main .bottom-info .dev-name {
+    font-weight: 500; /* Destaca o nome */
+    color: var(--preto-paineiras); /* Cor mais escura para o nome */
+    margin: 0 5px; /* Espaço ao redor do nome */
+    white-space: nowrap; /* Evita que o nome quebre a linha */
+}
+
+.main .bottom-info a {
+    text-decoration: none;
+    display: inline-flex; /* Para alinhar ícone e texto na mesma linha */
+    align-items: center;
+    gap: 4px; /* Espaço entre o ícone e o texto (se houvesse texto no link) */
+    color: var(--verde-paineiras); /* Cor do link */
+    margin: 0 5px; /* Espaço entre os links */
+    transition: color 0.3s ease;
+}
+
+.main .bottom-info a:hover {
+    color: var(--verde-hover-btn);
+}
+
+.main .bottom-info .dev-icon {
+    width: 16px; /* Tamanho do ícone */
+    height: 16px;
+    vertical-align: middle; /* Alinha o ícone com o texto */
+    /* Se os ícones forem P&B e você quiser que fiquem verdes, use um filtro como este: */
+    filter: invert(32%) sepia(26%) saturate(2377%) hue-rotate(94deg) brightness(97%) contrast(97%);
+}
+
+.result {
+    padding: 0px 5%;
+    flex-grow: 1; /* Permite que o resultado ocupe o espaço restante */
+    overflow-y: auto; /* Adiciona scroll interno se o conteúdo exceder a altura */
+    padding-bottom: 20px; /* Adicionado para evitar que o conteúdo do scroll fique colado no final */
+    box-sizing: border-box;
+}
+
+/* Scrollbar para o result */
+.result::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result::-webkit-scrollbar-track {
+    background: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.result::-webkit-scrollbar-thumb {
+    background: var(--cinza-medio);
+    border-radius: 10px;
+}
+
+.result::-webkit-scrollbar-thumb:hover {
+    background: var(--preto-paineiras);
+}
+
+.result-title {
+    margin: 40px 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--verde-paineiras); /* Cor do título do resultado */
+    flex-shrink: 0; /* Garante que o título do resultado não encolha */
+}
+
+.result img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.result-image-content { /* Regra para imagens de conteúdo */
+    width: 100%;
+    max-width: 512px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* Garante que a imagem de conteúdo não encolha */
+}
+
+/* Regra para avatares (como o user_icon) no result-data e outros ícones pequenos em result-title */
+.result-data img,
+.result-title img:not(.result-image-content) {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Garante que os avatares não encolham */
+}
+
+.result-data {
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    flex-shrink: 0; /* Garante que os dados do resultado não encolham */
+}
+
+.loader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0; /* Garante que o loader não encolha */
+}
+
+.loader hr {
+    border-radius: 4px;
+    border: none;
+    background-color: var(--cinza-claro);
+    background: linear-gradient(to right, var(--verde-hover-btn), var(--verde-bem-clarinho-hover), var(--verde-hover-btn));
+    background-size: 800px 50px;
+    height: 20px;
+    animation: loader 3s infinite linear;
+}
+
+@keyframes loader {
+    0% {
+        background-position: -800px 0px;
+    }
+    100% {
+        background-position: 800px 0px;
+    }
+}
+
+.result-data p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--preto-paineiras);
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 600px) {
+    .main {
+        padding-bottom: 0; /* Remover padding-bottom extra no mobile para evitar scroll */
+    }
+    .main-bottom input {
+        flex: none;
+        width: 150px;
+    }
+    .main-bottom img {
+        width: 20px;
+    }
+    .search-box {
+        padding: 5px 10px;
+    }
+    .search-box div {
+        gap: 5px;
+    }
+    .greet {
+        margin: 50px 0px;
+        padding-left: 22px;
+        font-size: 38px; /* Ajuste de fonte para mobile */
+    }
+    .main .bottom-info {
+        font-size: 11px; /* Fonte menor no mobile */
+        margin: 10px auto;
+        padding-top: 10px; /* Adiciona um pequeno padding superior */
+    }
+    .main .bottom-info a {
+        flex-direction: column; /* Links em coluna no mobile */
+        gap: 2px;
+        margin: 5px 0;
+    }
+    .main .bottom-info .dev-icon {
+        width: 14px; /* Ícones menores no mobile */
+        height: 14px;
+    }
+    .main .bottom-info .dev-name {
+        display: block; /* Garante que o nome fique acima/abaixo do ícone */
+        margin-bottom: 2px;
+    }
+    .main .cards {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Ajuste de cards para mobile */
+        padding: 0 10px;
+    }
+    .main .card {
+        height: 160px; /* Altura menor para cards no mobile */
+        padding: 10px;
+    }
+    .result-title {
+        margin: 20px 0;
+        font-size: 18px;
+    }
+    .result-data p {
+        font-size: 15px;
+    }
+    .result-image-content {
+        max-width: 90%; /* Ajusta largura da imagem de conteúdo para mobile */
+    }
+}

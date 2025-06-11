@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --verde-paineiras: #228B22; /* verde floresta */
+  --amarelo-paineiras: #FFD700; /* amarelo ouro */
+  --vermelho-paineiras: #D70000; /* vermelho intenso */
+  --preto-paineiras: #000000; /* preto */
+  --cinza-claro: #f8f9fa; /* cinza bem claro */
+  --branco: #ffffff; /* branco */
+  --cinza-medio: #6c757d; /* cinza médio para subtítulos */
+  --sombra-leve: rgba(0, 0, 0, 0.05);
+  --sombra-card: rgba(0, 0, 0, 0.08);
+  --sombra-card-hover: rgba(0, 0, 0, 0.1);
+  --verde-claro-suave: #DCE8C6; /* Mantendo este do seu nav anterior, pois parece se encaixar */
+  --verde-hover-btn: #1c7a1c; /* tom mais escuro do verde usado no hover do botão */
+  --borda-input: #ced4da; /* cinza claro para borda de inputs */
+  --sombra-foco-verde: rgba(34, 139, 34, 0.25);
+  --verde-bem-clarinho-hover: #E8F5E9; /* Verde clarinho para hover de cards */
+}
+
+* {
+  font-family: Outfit, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  animation: fadeInAnim 1.9s;
+}
+.main .nav-logo {
+    height: 30px; /* Ajuste conforme o tamanho desejado */
+    width: auto;
+}
