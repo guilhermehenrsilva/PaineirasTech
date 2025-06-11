@@ -91,23 +91,23 @@ const Main = () => {
             </div>
           </div>
           <p className="bottom-info">
-            Paineiras Assistente utiliza uma base de dados própria com
+            PaineirasTech utiliza uma base de dados própria com
             pesquisa gerada através de embeddings do Gemini. Algumas informações
             podem ser incorretas, sempre verifique as fonte recomendadas.
             <br />
             Desenvolvido por:
             <span className="dev-name"> Guilherme </span>
-            <a href="https://github.com/guilherme_github" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/guilhermehenrsilva" target="_blank" rel="noopener noreferrer">
               <img src={assets.github_icon} alt="GitHub" className="dev-icon" />
             </a>
-            <a href="https://www.linkedin.com/in/guilherme_linkedin" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/guilherme-henrique1997" target="_blank" rel="noopener noreferrer">
               <img src={assets.linkedin_icon} alt="LinkedIn" className="dev-icon" />
             </a>
             <span className="dev-name"> Gabriel </span>
-            <a href="https://github.com/gabriel_github" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/gabrielcaproni" target="_blank" rel="noopener noreferrer">
               <img src={assets.github_icon} alt="GitHub" className="dev-icon" />
             </a>
-            <a href="https://www.linkedin.com/in/gabriel_linkedin" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/gabriel-pegoraro-345947265" target="_blank" rel="noopener noreferrer">
               <img src={assets.linkedin_icon} alt="LinkedIn" className="dev-icon" />
             </a>
           </p>
